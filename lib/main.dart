@@ -12,6 +12,10 @@ class DespesasApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+
+  String title;
+  String value;
+
   final _transactions = [
     Transaction(
       id: '1',
@@ -84,7 +88,7 @@ class MyHomePage extends StatelessWidget {
                       ),
                       Text(
                         DateFormat('d/MM/y').format(tr.date),
-                         style: TextStyle(
+                        style: TextStyle(
                           color: Colors.grey[600],
                           fontSize: 14,
                         ),
@@ -94,6 +98,41 @@ class MyHomePage extends StatelessWidget {
                 ],
               ));
             }).toList(),
+          ),
+          Card(
+            elevation: 5,
+            child:Padding(
+              padding: const EdgeInsets.all(10),
+            child: Column(
+              children: <Widget>[
+                TextField(
+                  onChanged: (newValue) => title = newValue,
+                  decoration: InputDecoration(
+                    labelText: 'Título',
+                  ),
+                ),
+                TextField(
+                  onChanged: (newValue) => value = newValue,
+                  decoration: InputDecoration(
+                    labelText: 'Valor',
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    FlatButton(
+                      child: Text('Nova Transação'),
+                      textColor: Colors.amber,
+                      onPressed: () {
+                        print(title);
+                        print(value);
+                      },
+                    ),
+                  ],
+                )
+              ],
+            ),
+            )
           )
         ],
       ),
